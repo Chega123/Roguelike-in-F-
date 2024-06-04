@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "D5EUyD0rIM4=",
+  "success": true,
+  "projectFilePath": "g:\\proyecto LP\\Roguelike\\gane\\ga.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\fsharp.core\\8.0.300\\fsharp.core.8.0.300.nupkg.sha512"
+  ],
+  "logs": []
+}

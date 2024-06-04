@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "16VynPfAsjA=",
+  "success": true,
+  "projectFilePath": "G:\\proyecto LP\\Roguelike\\Roguelike-in-F-\\Roguelike.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\fsharp.core\\8.0.300\\fsharp.core.8.0.300.nupkg.sha512"
+  ],
+  "logs": []
+}
