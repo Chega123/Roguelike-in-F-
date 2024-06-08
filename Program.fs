@@ -1,17 +1,15 @@
 ﻿// Program.fs
 open Mapa
 open Player
-
-
-
+open Types
+open Game
 
 let main () =
-    let player = { pos = pos_inicial; puntos = 100; Inventario = [] }
-    imprimirMapa map1 player
-    let newPosition = Player.movePlayer player (1,0)
-    printfn "New position: (%d, %d)" newPosition.pos.X newPosition.pos.Y
+    let initialState:Gamestate ={
+        jugador = {Posicion=(1,1);direccion = DOWN;Habitacion_Actual = 1;Arma={Nombre="espada";Daño=20;Rango=2};Vida=100 }
+        Habitacion = Mapa.mapcollection}
+    
+    
+    drawMap initialState
 
-    // Imprimir el mapa
-    printfn "\nMapa actual:"
-    imprimirMapa map1 newPosition
-main()
+main ()
