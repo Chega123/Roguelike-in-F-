@@ -23,7 +23,7 @@ let mapcollection:list<Room> =[
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'s';'f';'f';'f';'f';'f';'f';'f';'s';'f';'f';'w'|]
             [|'w';'f';'s';'f';'s';'f';'f';'f';'f';'f';'s';'f';'s';'f';'w'|]
-            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'f';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
         ]
         Puertas=[{Posicion=(7,14);Sala_destino=2}]
@@ -52,6 +52,39 @@ let mapcollection:list<Room> =[
         Puertas=[{Posicion=(7,0);Sala_destino=1};{Posicion=(7,14);Sala_destino=3}]
         Items=[]
     }
+    {
+        Id=3
+        Enemigos=[]
+        Mapa=array2D [
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'f';'f';'f';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'f';'f';'f';'f';'f';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'f';'f';'f';'a';'f';'f';'f';'a';'w'|]
+            [|'w';'f';'a';'a';'a';'a';'f';'f';'f';'a';'a';'f';'f';'f';'w'|]
+            [|'d';'f';'f';'a';'a';'a';'f';'f';'f';'a';'a';'a';'f';'f';'d'|]
+            [|'w';'f';'f';'f';'a';'a';'f';'f';'f';'a';'a';'a';'a';'f';'w'|]
+            [|'w';'a';'f';'f';'f';'a';'f';'f';'f';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'f';'f';'f';'f';'f';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'f';'f';'f';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+        ]
+        Puertas=[{Posicion=(7,0);Sala_destino=2};{Posicion=(7,14);Sala_destino=4}]
+        Items=[]
+    }
+
+
+
+
+
+
+
+
+
+    
 ]
 
 
