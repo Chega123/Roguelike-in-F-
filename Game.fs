@@ -4,62 +4,46 @@ open Player
 open Mapa
 open Types
 
-let printRoomDetails (room: Room) =
-    printfn "Room ID: %d" room.Id
-    printfn "Enemies in room:"
-    room.Enemigos |> List.iter (fun enemy -> 
-        printfn "Nombre: %s, Posicion: %A, Vida: %d, Daño: %d, Rango: %d" 
-            enemy.Nombre enemy.Posicion enemy.Vida enemy.Daño enemy.Rango)
+open System
+open System.Threading.Tasks
 
 
-let drawMap (game: Gamestate) =
-    let actual_room = game.Habitacion.[game.jugador.Habitacion_Actual - 1]
-    let height = Array2D.length1 actual_room.Mapa
-    let width = Array2D.length2 actual_room.Mapa
-    let mapCopy = Array2D.copy actual_room.Mapa
+let handlePlayerInput (input: ConsoleKeyInfo option) (state: Gamestate) =
+    match input with
+    | Some input ->
+        match input.Key with
+        | ConsoleKey.UpArrow -> { state with jugador = { state.jugador with Direccion = UP } } 
+        | ConsoleKey.DownArrow -> { state with jugador = { state.jugador with Direccion = DOWN } }
+        | ConsoleKey.LeftArrow -> { state with jugador = { state.jugador with Direccion = LEFT } }
+        | ConsoleKey.RightArrow -> { state with jugador = { state.jugador with Direccion = RIGHT } }
+        | ConsoleKey.Spacebar -> { state with jugador = { state.jugador with Direccion = ATTACK } }
+        | _ -> { state with jugador = { state.jugador with Direccion = NADA } }
+    | None -> { state with jugador = { state.jugador with Direccion = NADA } }
 
-    //jugador
-    let px,py=game.jugador.Posicion
-    mapCopy.[px,py]<-'2'
+let updateGameState (game: Gamestate) =
+    let movedPlayer = movePlayer game.jugador
+    { game with jugador = movedPlayer }
 
-    //puertas
-    actual_room.Puertas|> List.iter(fun puerta ->
-        let dx, dy = puerta.Posicion
-        mapCopy.[dx,dy]<-'3')
 
-    //enemigos
-    actual_room.Enemigos |> List.iter (fun enemy ->
-        let ex, ey = enemy.Posicion
-        match enemy.Nombre with
-        | "Rata Escurridiza" -> mapCopy.[ex, ey] <- 'R'
-        | "Goblin Sigiloso" -> mapCopy.[ex, ey] <- 'G'
-        | "Lobo Salvaje" -> mapCopy.[ex, ey] <- 'L'
-        | "Orco Enfurecido" -> mapCopy.[ex, ey] <- 'O'
-        | "Troll Pesado" -> mapCopy.[ex, ey] <- 'T'
-        | "Esqueleto Débil" -> mapCopy.[ex, ey] <- 'E'
-        | "Zombi Lento" -> mapCopy.[ex, ey] <- 'Z'
-        | "Brujo Oscuro" -> mapCopy.[ex, ey] <- 'B'
-        | "Espectro Sombrío" -> mapCopy.[ex, ey] <- '♫'
-        | _ -> ()
+let rec gameLoop (game: Gamestate) =
+    // Renderiza el estado del juego
+    Console.Clear()
+    drawMap game
 
-    )
+    // Captura la entrada del jugador si está disponible
+    let input =
+        if Console.KeyAvailable then
+            Some (Console.ReadKey true)
+        else
+            None
 
-    for y in 0 .. height - 1 do
-        for x in 0 .. width - 1 do
-            match mapCopy.[y, x] with
-            | 'w' -> printf "█"  // Pared
-            | 'f' -> printf " "  // Suelo
-            | 's' -> printf "x"  // Algo especial, tal vez un obstáculo
-            | 'R' -> printf "R"  // Rata Escurridiza
-            | '2' -> printf "@"  // Jugador
-            | '3' -> printf "◄"  // Puerta
-            | 'G' -> printf "G"  // Goblin Sigiloso
-            | 'L' -> printf "L"  // Lobo Salvaje
-            | 'O' -> printf "O"  // Orco Enfurecido
-            | 'T' -> printf "T"  // Troll Pesado
-            | 'E' -> printf "E"  // Esqueleto Débil
-            | 'Z' -> printf "Z"  // Zombi Lento
-            | 'B' -> printf "B"  // Brujo Oscuro
-            | '♫' -> printf "♫"  // Espectro Sombrío
-            | _ -> printf "?"    // Desconocido
-        printfn ""
+    // Maneja la entrada del jugador
+    let newgame = handlePlayerInput input game
+
+    // Actualiza el estado del juego
+    let updatedgtate = updateGameState newgame
+
+    // Espera un breve momento para controlar la velocidad del bucle del juego
+    System.Threading.Thread.Sleep(10)
+    // Continua el bucle del juego
+    gameLoop updatedgtate

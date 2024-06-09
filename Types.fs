@@ -6,6 +6,7 @@ type Direction =
     | LEFT
     | RIGHT
     | ATTACK
+    | NADA
 
 type Weapon={
     Nombre:string
@@ -21,7 +22,7 @@ type Item={
 
 type Player = {
     Posicion : int * int
-    direccion:Direction
+    Direccion:Direction
     Habitacion_Actual:int
     Arma:Weapon
     Vida:int
@@ -50,5 +51,5 @@ type Room={
 
 type Gamestate={
     jugador:Player
-    Habitacion:Room list
+    Habitaciones:Room list
 }
