@@ -31,3 +31,6 @@ let randomBoss (posicion_base: int * int) :Enemy=
 
 let generateEnemiesWithPositions (positions: list<int * int>) : list<Enemy> =
     positions |> List.map randomEnemy
+
+let generateBossesWithPositions (positions: list<int * int>) : list<Enemy> =
+    positions |> List.map randomBoss
