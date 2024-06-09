@@ -36,7 +36,7 @@ let spawnmapcollection:list<Room> =[ //unico, sala de destino siempre
 let mapcollection:list<Room> =[
     {
         Id=1
-        Enemigos=[] //generateEnemiesWithPositions[(7,12)]
+        Enemigos=[]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
@@ -322,4 +322,19 @@ let drawMap (game: Gamestate) =
     // Devuelve una nueva versión del estado del juego con la lista de habitaciones actualizada
     { game with Habitaciones = updated_rooms }
 
+let random = new System.Random()
 
+let updateRoomWithDoors (id: int) (total: int) (room: Room) =
+    let newDoors =
+        match id with
+        | 1 -> [{Posicion=(7,14); Sala_destino=2}] // Only door to the next room
+        | _ when id = total -> [{Posicion=(7,0); Sala_destino=id-1}] // Only door to the previous room
+        | _ -> [{Posicion=(7,14); Sala_destino=id+1}; {Posicion=(7,0); Sala_destino=id-1}] // Doors to the next and previous rooms
+    { room with Id = id; Puertas = newDoors }
+
+let generateRooms (spawn: list<Room>) (maps: list<Room>) =
+    let spawnRoom = spawn |> List.item (random.Next(spawn.Length))
+    let mapRooms = maps |> List.sortBy (fun _ -> random.Next()) |> List.take 5
+    let total = mapRooms.Length + 1
+    spawnRoom :: mapRooms
+    |> List.mapi (fun id room -> updateRoomWithDoors (id + 1) total room)
