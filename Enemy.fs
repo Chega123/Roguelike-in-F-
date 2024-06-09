@@ -34,3 +34,67 @@ let generateEnemiesWithPositions (positions: list<int * int>) : list<Enemy> =
 
 let generateBossesWithPositions (positions: list<int * int>) : list<Enemy> =
     positions |> List.map randomBoss
+
+
+let calculateDirection (enemyPos: int * int) (playerPos: int * int) =
+    let (ex, ey) = enemyPos
+    let (px, py) = playerPos
+    if ex < px then DOWN
+    elif ex > px then UP
+    elif ey < py then RIGHT
+    else LEFT
+
+let moveEnemy (enemy: Enemy) (playerPos: int * int) (map: char[,]) =
+    let direction = calculateDirection enemy.Posicion playerPos
+    let (x, y) = enemy.Posicion
+    let newPos =
+        match direction with
+        | UP -> (x - 1, y)
+        | DOWN -> (x + 1, y)
+        | LEFT -> (x, y - 1)
+        | RIGHT -> (x, y + 1)
+        | NADA -> (x, y)
+    let (nx, ny) = newPos
+    if nx >= 0 && ny >= 0 && nx < Array2D.length1 map && ny < Array2D.length2 map then
+        match map.[nx, ny] with
+        | '2' -> { enemy with Posicion = newPos }
+        | 'f' -> { enemy with Posicion = newPos }
+        | _ -> enemy
+    else
+        enemy
+
+let moveEnemies (enemies: Enemy list) (playerPos: int * int) (map: char[,]) =
+    enemies |> List.map (fun enemy -> moveEnemy enemy playerPos map)
+
+let updateGameStateWithEnemies (game: Gamestate) =
+    let actualroom = game.Habitaciones.[game.jugador.Habitacion_Actual - 1]
+    let updatedEnemies = moveEnemies actualroom.Enemigos game.jugador.Posicion actualroom.Mapa
+    let updatedRoom = { actualroom with Enemigos = updatedEnemies }
+    let updatedRooms = 
+        game.Habitaciones 
+        |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updatedRoom else room)
+    { game with Habitaciones = updatedRooms }
+
+
+let isPlayerInRange (playerPos: int * int) (enemyPos: int * int) (rango: int) =
+    let (px, py) = playerPos
+    let (ex, ey) = enemyPos
+    let distance = abs(px - ex) + abs(py - ey)
+    distance <= rango
+
+let attackPlayer (player: Player) (enemy: Enemy) =
+    { player with Vida = player.Vida - enemy.Daño }
+
+
+let rec attackEnemiesInRange (player: Player) (enemies: Enemy list) =
+    match enemies with
+    | [] -> player // Si no hay más enemigos, devolvemos el jugador sin cambios
+    | enemy::rest -> //como lo de haskell
+        // Verificar si el jugador está dentro del rango de ataque del enemigo actual
+        if isPlayerInRange player.Posicion enemy.Posicion enemy.Rango then
+            // Si el jugador está en el rango, realizar el ataque del enemigo al jugador
+            let updatedPlayer = attackPlayer player enemy
+            attackEnemiesInRange updatedPlayer rest
+        else
+            attackEnemiesInRange player rest
+

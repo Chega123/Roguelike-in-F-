@@ -37,3 +37,19 @@ let ChangeRoom (player: Player) (game: Gamestate) =
             | None -> player
     else
         player
+
+
+
+let attackEnemies (player: Player) (enemies: Enemy list) =
+    let inRange (enemy: Enemy) =
+        let dx = abs (fst player.Posicion - fst enemy.Posicion)
+        let dy = abs (snd player.Posicion - snd enemy.Posicion)
+        dx <= player.Arma.Rango && dy <= player.Arma.Rango
+
+    enemies
+    |> List.map (fun enemy ->
+        if inRange enemy then
+            { enemy with Vida = enemy.Vida - player.Arma.Daño }
+        else
+            enemy)
+    |> List.filter (fun enemy -> enemy.Vida > 0)

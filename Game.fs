@@ -3,6 +3,7 @@ module Game
 open Player
 open Mapa
 open Types
+open Enemy
 
 open System
 open System.Threading.Tasks
@@ -23,18 +24,43 @@ let handlePlayerInput (input: ConsoleKeyInfo option) (state: Gamestate) =
 
 
 
-
-let updateGameState (game: Gamestate) =
+let updateGameState (game: Gamestate) (contador:int) =
     let movedPlayer = movePlayer game.jugador game
-    let ChangeRo= ChangeRoom movedPlayer game
-    printf "Vida: %A" game.jugador.Vida
-    printf "Arma: %A"game.jugador.Arma.Nombre
-    { game with jugador = ChangeRo }
+    
+    match movedPlayer.Direccion with
+    | ATTACK -> //cuando atacas no hace la comprobacion de si estas cambiando de habitacion ni el movimiento de los enemigos
+        let updatedEnemies = attackEnemies movedPlayer game.Habitaciones.[game.jugador.Habitacion_Actual - 1].Enemigos
+        let updatedRoom = { game.Habitaciones.[game.jugador.Habitacion_Actual - 1] with Enemigos = updatedEnemies } //actualiza los enemigos de la habitacion
+        let updatedRooms =
+            game.Habitaciones
+            |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updatedRoom else room)
+        { game with jugador = movedPlayer; Habitaciones = updatedRooms } // busca y actualiza la habitacion en la que esta el jugador y retorna ese game
+    | _ ->
+        
+
+        let updatedPlayer =
+            if contador % 20 = 0 then // Limitar los ataques de los enemigos
+                game.Habitaciones.[game.jugador.Habitacion_Actual - 1].Enemigos
+                |> List.fold (fun player enemy ->
+                    if enemy.Posicion = game.jugador.Posicion then 
+                        attackPlayer player enemy 
+                    else
+                        player 
+                ) movedPlayer // esto es otro parametro del list fold, es el que pasara en lo de player de la fun
+            else
+                movedPlayer
+
+        let ChangeRo = ChangeRoom updatedPlayer game 
+        printf "Vida: %A" updatedPlayer.Vida 
+        printf "Arma: %A" updatedPlayer.Arma.Nombre
+        if contador % 35 = 0 then 
+            let game_enemies = updateGameStateWithEnemies game 
+            { game_enemies with jugador = ChangeRo }
+        else 
+            { game with jugador = ChangeRo }
 
 
-
-
-let rec gameLoop (game: Gamestate) =
+let rec gameLoop (game: Gamestate) (contador:int) =
     // Renderiza el estado del juego
     Console.Clear()
     
@@ -54,10 +80,10 @@ let rec gameLoop (game: Gamestate) =
     let newgame = handlePlayerInput input game
 
     // Actualiza el estado del juego
-    let updatedstate = updateGameState newgame
-
+    let updatedstate = updateGameState newgame contador
+    let newcontador=contador+1
     // Espera un breve momento para controlar la velocidad del bucle del juego
     System.Threading.Thread.Sleep(10)
     // Continua el bucle del juego
-    gameLoop updatedstate
+    gameLoop updatedstate newcontador
 
