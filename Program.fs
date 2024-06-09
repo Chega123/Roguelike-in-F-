@@ -10,7 +10,7 @@ open System
 
 let main () =
     let initialgame:Gamestate ={
-        jugador = {Posicion=(1,7);Direccion = NADA ;Habitacion_Actual = 1;Arma={Nombre="espada";Daño=20;Rango=2};Vida=100 }
+        jugador = {Posicion=(7,1);Direccion = NADA ;Habitacion_Actual = 1;Arma={Nombre="espada";Daño=20;Rango=2};Vida=100 }
         Habitaciones = Mapa.mapcollection}
     
     Async.Start (gameLoop initialgame)
