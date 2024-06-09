@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("Roguelike")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+017c551743a66d16863a02f513e384174834f16b")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74678184867b9b5c36f240c25b44e9f8cdcd80c8")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("Roguelike")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("Roguelike")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]

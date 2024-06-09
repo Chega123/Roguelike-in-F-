@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FileUtils.fs" />
     <Compile Include="types.fs" />
     <Compile Include="Enemy.fs" />
     <Compile Include="Mapa.fs" />

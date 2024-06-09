@@ -1,6 +1,8 @@
 import pygame
 import sys
-
+import time
+import random
+import string
 # Función para cargar la matriz desde el archivo de texto
 def load_matrix_from_file(file_path):
     with open(file_path, 'r') as file:
@@ -10,10 +12,23 @@ def load_matrix_from_file(file_path):
 
 # Función para cargar las imágenes en un diccionario
 def load_images():
+    numero_aleatorio = random.randint(1, 3)
     image_map = {
-        'w': pygame.image.load('sprites/pared/1.jpg'),
-        'f': pygame.image.load('sprites/piso/1.jpg'),
-        's': pygame.image.load('sprites/puas/1.jpg')
+        'w': pygame.image.load('sprites/pared/' + str(numero_aleatorio) + '.jpg'),
+        'f': pygame.image.load('sprites/piso/' + str(numero_aleatorio) + '.jpg'),
+        's': pygame.image.load('sprites/puas/' + str(numero_aleatorio) + '.jpg'),
+        'a': pygame.image.load('sprites/abismo/abismo.jpg'),
+        '2': pygame.image.load('sprites/jugador/1.jpg'),
+        'R': pygame.image.load('sprites/enemigo/rata.jpg'),
+        '3': pygame.image.load('sprites/puerta/1.jpg'),
+        'G': pygame.image.load('sprites/enemigo/gobling.jpg'),
+        'L': pygame.image.load('sprites/enemigo/lobo.jpg'),
+        'O': pygame.image.load('sprites/enemigo/orco.jpg'),
+        'T': pygame.image.load('sprites/enemigo/troll.jpg'),
+        'E': pygame.image.load('sprites/enemigo/esqueleto.jpg'),
+        'Z': pygame.image.load('sprites/enemigo/zombie.jpg'),
+        'B': pygame.image.load('sprites/enemigo/brujo.jpg'),
+        '♫': pygame.image.load('sprites/enemigo/espectro.jpg')
         # Agrega más letras e imágenes según sea necesario
     }
     return image_map
@@ -45,16 +60,18 @@ clock = pygame.time.Clock()
 # Cargar las imágenes
 image_map = load_images()
 
-# Cargar y dibujar la matriz
-matrix = load_matrix_from_file(file_path)
-draw_matrix(matrix, screen, CELL_SIZE, image_map)
-
 # Bucle principal
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
+    
+    # Cargar y dibujar la matriz en cada iteración del bucle
+    matrix = load_matrix_from_file(file_path)
+    screen.fill((0, 0, 0))  # Limpiar la pantalla antes de dibujar la nueva matriz
+    draw_matrix(matrix, screen, CELL_SIZE, image_map)
+    
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(60)  # Controla la velocidad del bucle
+# Añadir una pausa para evitar leer el archivo con demasiada frecuencia

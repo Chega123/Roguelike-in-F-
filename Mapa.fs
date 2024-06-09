@@ -1,13 +1,14 @@
 // Mapa.fs
 module Mapa
 open Types
-
+open System
 open Enemy
 
 let mapcollection:list<Room> =[
     {
         Id=1
-        Enemigos=generateEnemiesWithPositions[(6,2);(6,12);(7,11)]
+        //Enemigos=generateEnemiesWithPositions[(6,2);(6,12);(7,11)]
+        Enemigos=[]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
@@ -48,7 +49,7 @@ let mapcollection:list<Room> =[
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
         ]
-        Puertas=[{Posicion=(0,7);Sala_destino=1};{Posicion=(14,7);Sala_destino=3}]
+        Puertas=[{Posicion=(7,0);Sala_destino=1};{Posicion=(7,14);Sala_destino=3}]
         Items=[]
     }
 ]
@@ -71,17 +72,17 @@ let drawMap (game: Gamestate) =
     let width = Array2D.length2 actual_room.Mapa
     let mapCopy = Array2D.copy actual_room.Mapa
 
-   // printRoomDetails(actual_room)
-    //jugador
-    let px,py=game.jugador.Posicion
-    mapCopy.[px,py]<-'2'
+    // Jugador
+    let px, py = game.jugador.Posicion
+    mapCopy.[px, py] <- '2'
 
-    //puertas
-    actual_room.Puertas|> List.iter(fun puerta ->
+    // Puertas
+    actual_room.Puertas |> List.iter (fun puerta ->
         let dx, dy = puerta.Posicion
-        mapCopy.[dx,dy]<-'3')
+        mapCopy.[dx, dy] <- '3'
+    )
 
-    //enemigos
+    // Enemigos
     actual_room.Enemigos |> List.iter (fun enemy ->
         let ex, ey = enemy.Posicion
         match enemy.Nombre with
@@ -95,25 +96,17 @@ let drawMap (game: Gamestate) =
         | "Brujo Oscuro" -> mapCopy.[ex, ey] <- 'B'
         | "Espectro Sombrío" -> mapCopy.[ex, ey] <- '♫'
         | _ -> ()
-
     )
 
-    for y in 0 .. height - 1 do
-        for x in 0 .. width - 1 do
-            match mapCopy.[y, x] with
-            | 'w' -> printf "█"  // Pared
-            | 'f' -> printf " "  // Suelo
-            | 's' -> printf "x"  // Algo especial, tal vez un obstáculo
-            | 'R' -> printf "R"  // Rata Escurridiza
-            | '2' -> printf "@"  // Jugador
-            | '3' -> printf "◄"  // Puerta
-            | 'G' -> printf "G"  // Goblin Sigiloso
-            | 'L' -> printf "L"  // Lobo Salvaje
-            | 'O' -> printf "O"  // Orco Enfurecido
-            | 'T' -> printf "T"  // Troll Pesado
-            | 'E' -> printf "E"  // Esqueleto Débil
-            | 'Z' -> printf "Z"  // Zombi Lento
-            | 'B' -> printf "B"  // Brujo Oscuro
-            | '♫' -> printf "♫"  // Espectro Sombrío
-            | _ -> printf "?"    // Desconocido
-        printfn ""
+    // Actualiza la habitación actual con el nuevo mapa
+    let updated_room = { actual_room with Mapa = mapCopy }
+
+    // Reemplaza la habitación en la lista de habitaciones
+    let updated_rooms = 
+        game.Habitaciones 
+        |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updated_room else room)
+
+    // Devuelve una nueva versión del estado del juego con la lista de habitaciones actualizada
+    { game with Habitaciones = updated_rooms }
+
+
