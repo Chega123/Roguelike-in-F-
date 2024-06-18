@@ -18,17 +18,17 @@ def load_images():
         'f': pygame.image.load('sprites/piso/' + str(numero_aleatorio) + '.jpg'),
         's': pygame.image.load('sprites/puas/' + str(numero_aleatorio) + '.jpg'),
         'a': pygame.image.load('sprites/abismo/abismo.jpg'),
-        '2': pygame.image.load('sprites/jugador/1.jpg'),
-        'R': pygame.image.load('sprites/enemigo/rata.jpg'),
-        '3': pygame.image.load('sprites/puerta/1.jpg'),
-        'G': pygame.image.load('sprites/enemigo/gobling.jpg'),
-        'L': pygame.image.load('sprites/enemigo/lobo.jpg'),
-        'O': pygame.image.load('sprites/enemigo/orco.jpg'),
-        'T': pygame.image.load('sprites/enemigo/troll.jpg'),
-        'E': pygame.image.load('sprites/enemigo/esqueleto.jpg'),
-        'Z': pygame.image.load('sprites/enemigo/zombie.jpg'),
-        'B': pygame.image.load('sprites/enemigo/brujo.jpg'),
-        '♫': pygame.image.load('sprites/enemigo/espectro.jpg')
+        '2': pygame.image.load('sprites/jugador/' + str(numero_aleatorio) + '.jpg'),
+        'R': pygame.image.load('sprites/enemigo/rata' + str(numero_aleatorio) + '.jpg'),
+        '3': pygame.image.load('sprites/puerta/' + str(numero_aleatorio) + '.jpg'),
+        'G': pygame.image.load('sprites/enemigo/gobling' + str(numero_aleatorio) + '.jpg'),
+        'L': pygame.image.load('sprites/enemigo/lobo' + str(numero_aleatorio) + '.jpg'),
+        'O': pygame.image.load('sprites/enemigo/orco' + str(numero_aleatorio) + '.jpg'),
+        'T': pygame.image.load('sprites/enemigo/troll' + str(numero_aleatorio) + '.jpg'),
+        'E': pygame.image.load('sprites/enemigo/esqueleto' + str(numero_aleatorio) + '.jpg'),
+        'Z': pygame.image.load('sprites/enemigo/zombie' + str(numero_aleatorio) + '.jpg'),
+        'B': pygame.image.load('sprites/enemigo/brujo' + str(numero_aleatorio) + '.jpg'),
+        '♫': pygame.image.load('sprites/enemigo/espectro' + str(numero_aleatorio) + '.jpg')
         # Agrega más letras e imágenes según sea necesario
     }
     return image_map
