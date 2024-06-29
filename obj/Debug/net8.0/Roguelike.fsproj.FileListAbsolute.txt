@@ -57,3 +57,9 @@ G:\proyecto LP\Roguelike\Roguelike-in-F-\obj\Debug\net8.0\refint\Roguelike.dll
 G:\proyecto LP\Roguelike\Roguelike-in-F-\obj\Debug\net8.0\Roguelike.pdb
 G:\proyecto LP\Roguelike\Roguelike-in-F-\obj\Debug\net8.0\Roguelike.genruntimeconfig.cache
 G:\proyecto LP\Roguelike\Roguelike-in-F-\obj\Debug\net8.0\ref\Roguelike.dll
+G:\proyecto LP\Roguelike\Roguelike-in-F-\bin\Debug\net8.0\NAudio.dll
+G:\proyecto LP\Roguelike\Roguelike-in-F-\bin\Debug\net8.0\NAudio.Asio.dll
+G:\proyecto LP\Roguelike\Roguelike-in-F-\bin\Debug\net8.0\NAudio.Core.dll
+G:\proyecto LP\Roguelike\Roguelike-in-F-\bin\Debug\net8.0\NAudio.Midi.dll
+G:\proyecto LP\Roguelike\Roguelike-in-F-\bin\Debug\net8.0\NAudio.Wasapi.dll
+G:\proyecto LP\Roguelike\Roguelike-in-F-\bin\Debug\net8.0\NAudio.WinMM.dll

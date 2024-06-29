@@ -14,6 +14,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgNAudio Condition=" '$(PkgNAudio)' == '' ">C:\Users\Usuario\.nuget\packages\naudio\2.2.1</PkgNAudio>
     <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">C:\Users\Usuario\.nuget\packages\fsharp.core\8.0.300</PkgFSharp_Core>
   </PropertyGroup>
 </Project>

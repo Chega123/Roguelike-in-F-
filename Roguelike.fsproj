@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FileUtils.fs" />
+    <Compile Include="Music.fs" />
     <Compile Include="types.fs" />
     <Compile Include="Items.fs" />
     <Compile Include="Enemy.fs" />
@@ -12,5 +13,8 @@
     <Compile Include="Player.fs" />
     <Compile Include="Game.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
   </ItemGroup>
 </Project>

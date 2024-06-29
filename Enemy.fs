@@ -1,6 +1,6 @@
 module Enemy
 open Types
-
+open Music
 let EnemiesCollection:list<Enemy>=[
     { Nombre = "Rata Escurridiza"; Posicion = (2, 1); Vida = 30; Daño = 5; Rango = 1 }
     { Nombre = "Goblin Sigiloso"; Posicion = (4, 1); Vida = 50; Daño = 10; Rango = 1 }
@@ -82,6 +82,7 @@ let isPlayerInRange (playerPos: int * int) (enemyPos: int * int) (rango: int) =
     distance <= rango
 
 let attackPlayer (player: Player) (enemy: Enemy) =
+    Async.Start(playMp3FileAsync daño)
     { player with Vida = player.Vida - enemy.Daño }
 
 

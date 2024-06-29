@@ -50,6 +50,11 @@
               "target": "Package",
               "version": "[8.0.300, )",
               "generatePathProperty": true
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )",
+              "generatePathProperty": true
             }
           },
           "imports": [

@@ -39,7 +39,7 @@ let updateGameState (game: Gamestate) (contador:int) =
         
 
         let updatedPlayer =
-            if contador % 15 = 0 then // Limitar los ataques de los enemigos
+            if contador % 5 = 0 then // Limitar los ataques de los enemigos
                 game.Habitaciones.[game.jugador.Habitacion_Actual - 1].Enemigos
                 |> List.fold (fun player enemy ->
                     if enemy.Posicion = game.jugador.Posicion then 

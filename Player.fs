@@ -1,8 +1,13 @@
 // Player.fs
 module Player
 open Types
+open Music
 open System
 open Items
+
+
+
+
 
 let movePlayer (player: Player) (game:Gamestate) =
     let actualroom=game.Habitaciones.[game.jugador.Habitacion_Actual-1]
@@ -47,7 +52,8 @@ let attackEnemies (player: Player) (enemies: Enemy list) =
         let dx = abs (fst player.Posicion - fst enemy.Posicion)
         let dy = abs (snd player.Posicion - snd enemy.Posicion)
         dx <= player.Arma.Rango && dy <= player.Arma.Rango
-
+    
+    if player.Arma.Nombre = "Chayanne" then Async.Start(playMp3FileAsync chayanne_ataque) else Async.Start(playMp3FileAsync golpe_generico)
     enemies
     |> List.map (fun enemy ->
         if inRange enemy then
@@ -74,8 +80,6 @@ let changeWeapon (player: Player) (game: Gamestate) =
         let updatedPlayer = { player with Arma = weapon }
         let updatedRoom = { actualroom with Items = oldWeaponItem }
         let updatedRooms = game.Habitaciones |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updatedRoom else room)
-
-        
-
+        Async.Start(playMp3FileAsync recoger)
         { game with jugador = updatedPlayer; Habitaciones = updatedRooms }
     | None -> { game with jugador = player}
