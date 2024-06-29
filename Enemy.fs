@@ -5,11 +5,11 @@ let EnemiesCollection:list<Enemy>=[
     { Nombre = "Rata Escurridiza"; Posicion = (2, 1); Vida = 30; Daño = 5; Rango = 1 }
     { Nombre = "Goblin Sigiloso"; Posicion = (4, 1); Vida = 50; Daño = 10; Rango = 1 }
     { Nombre = "Lobo Salvaje"; Posicion = (6, 1); Vida = 70; Daño = 12; Rango = 2 }
-    { Nombre = "Orco Enfurecido"; Posicion = (8, 1); Vida = 100; Daño = 15; Rango = 2 }
-    { Nombre = "Troll Pesado"; Posicion = (10, 1); Vida = 150; Daño = 20; Rango = 2 }
+    { Nombre = "Orco Enfurecido"; Posicion = (8, 1); Vida = 100; Daño = 15; Rango = 3 }
+    { Nombre = "Troll Pesado"; Posicion = (10, 1); Vida = 150; Daño = 20; Rango = 3 }
     { Nombre = "Esqueleto Débil"; Posicion = (13, 1); Vida = 20; Daño = 5; Rango = 1 }
     { Nombre = "Zombi Lento"; Posicion = (15, 1); Vida = 50; Daño = 10; Rango = 1 }
-    { Nombre = "Brujo Oscuro"; Posicion = (17, 1); Vida = 80; Daño = 18; Rango = 2 }
+    { Nombre = "Brujo Oscuro"; Posicion = (17, 1); Vida = 80; Daño = 18; Rango = 4 }
     { Nombre = "Espectro Sombrío"; Posicion = (20, 1); Vida = 60; Daño = 15; Rango = 2 }
 ]
 
@@ -57,8 +57,7 @@ let moveEnemy (enemy: Enemy) (playerPos: int * int) (map: char[,]) =
     let (nx, ny) = newPos
     if nx >= 0 && ny >= 0 && nx < Array2D.length1 map && ny < Array2D.length2 map then
         match map.[nx, ny] with
-        | '2' -> { enemy with Posicion = newPos }
-        | 'f' -> { enemy with Posicion = newPos }
+        | 'f' | '2' -> { enemy with Posicion = newPos }
         | _ -> enemy
     else
         enemy

@@ -60,6 +60,8 @@ let attackEnemies (player: Player) (enemies: Enemy list) =
 
 let changeWeapon (player: Player) (game: Gamestate) =
     let actualroom = game.Habitaciones.[game.jugador.Habitacion_Actual - 1]
+    let oldw=player.Arma
+    printfn "Entré a cambiar arma: %s" oldw.Nombre
     let itemposition =
         match actualroom.Items with
         | item :: _ when item.Posicion = player.Posicion -> Some item.tipo
@@ -68,11 +70,12 @@ let changeWeapon (player: Player) (game: Gamestate) =
     match itemposition with
     | Some weapon ->
         printfn "Entré a cambiar arma: %s" weapon.Nombre
+        let oldWeaponItem = [{ Posicion = player.Posicion; tipo = oldw }]
         let updatedPlayer = { player with Arma = weapon }
-        let newItem : Item = { Posicion = player.Posicion; tipo = player.Arma }
-        let updatedItems = newItem :: (actualroom.Items |> List.filter (fun i -> i.Posicion <> player.Posicion))
-        let updatedRoom = { actualroom with Items = updatedItems }
-        let updatedRooms: Room list = game.Habitaciones |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updatedRoom else room)
+        let updatedRoom = { actualroom with Items = oldWeaponItem }
+        let updatedRooms = game.Habitaciones |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updatedRoom else room)
+
+        
 
         { game with jugador = updatedPlayer; Habitaciones = updatedRooms }
     | None -> { game with jugador = player}

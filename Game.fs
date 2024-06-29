@@ -39,7 +39,7 @@ let updateGameState (game: Gamestate) (contador:int) =
         
 
         let updatedPlayer =
-            if contador % 20 = 0 then // Limitar los ataques de los enemigos
+            if contador % 15 = 0 then // Limitar los ataques de los enemigos
                 game.Habitaciones.[game.jugador.Habitacion_Actual - 1].Enemigos
                 |> List.fold (fun player enemy ->
                     if enemy.Posicion = game.jugador.Posicion then 
@@ -69,7 +69,7 @@ let rec gameLoop (game: Gamestate) (contador:int) =
     let newmapa=drawMap game
     let actualroom=newmapa.Habitaciones.[newmapa.jugador.Habitacion_Actual-1]
 
-    FileUtils.saveMatrixToFile actualroom.Mapa "map.txt"
+    FileUtils.saveRoomStateToFile "map.txt" game.jugador.Vida game.jugador.Arma.Nombre game.jugador.Habitacion_Actual actualroom.Mapa
 
     // Captura la entrada del jugador si está disponible
     let input =
