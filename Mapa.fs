@@ -108,11 +108,11 @@ let spawnmapcollection:list<Room> =[ //unico, sala de destino siempre
 let mapcollection:list<Room> =[
     {
         Id=1
-        Enemigos=[]
+        Enemigos=generateEnemiesWithPositions[(6,12);(7,11);(5,11)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
-            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
-            [|'w';'a';'a';'a';'s';'a';'a';'s';'a';'a';'s';'a';'a';'a';'w'|]
+            [|'w';'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w';'w'|]
+            [|'w';'a';'a';'f';'s';'f';'f';'s';'f';'f';'s';'f';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
             [|'w';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'w'|]
@@ -122,8 +122,8 @@ let mapcollection:list<Room> =[
             [|'w';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
-            [|'w';'a';'a';'a';'s';'a';'a';'s';'a';'a';'s';'a';'a';'a';'w'|]
-            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'f';'s';'f';'f';'s';'f';'f';'s';'f';'a';'a';'w'|]
+            [|'w';'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
         ]
         Puertas=[{Posicion=(7,14);Sala_destino=2}]
@@ -131,7 +131,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=2
-        Enemigos=[]
+        Enemigos=generateEnemiesWithPositions[(9,12);(7,11);(3,11)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'a';'a';'a';'w'|]
@@ -154,7 +154,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=3
-        Enemigos=[] //(5,11)
+        Enemigos=generateEnemiesWithPositions[(5,11);(10,4)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
@@ -177,7 +177,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=4
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(9,5);(3,11)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
@@ -200,7 +200,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=5
-        Enemigos=generateEnemiesWithPositions[(3,12);(12,12)]
+        Enemigos=generateEnemiesWithPositions[(3,12);(12,12);(3,5)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
@@ -209,7 +209,7 @@ let mapcollection:list<Room> =[
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'d'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
@@ -223,7 +223,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=6
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(1,1);(13,1);(12,12)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]            
@@ -246,7 +246,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=7
-        Enemigos=[]
+        Enemigos=generateEnemiesWithPositions[(4,9);(4,12)]
         Mapa=array2D [
             [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
             [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
@@ -269,7 +269,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=8
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(2,7);(12,6)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
@@ -292,7 +292,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=9
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(4,6);(4,8);(6,7);(12,12);(2,12)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'w'|]
@@ -300,9 +300,9 @@ let mapcollection:list<Room> =[
             [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
-            [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
-            [|'d';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'d'|]
-            [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'s';'w';'f';'f';'f';'f';'f';'w';'s';'f';'f';'w'|]
+            [|'d';'f';'f';'s';'w';'f';'f';'f';'f';'f';'w';'s';'f';'f';'d'|]
+            [|'w';'f';'f';'s';'w';'f';'f';'f';'f';'f';'w';'s';'f';'f';'w'|]
             [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'w';'f';'f';'f';'f';'f';'w';'f';'f';'f';'w'|]
@@ -315,7 +315,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=10
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(12,12);(2,12)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
@@ -338,30 +338,30 @@ let mapcollection:list<Room> =[
     }
     {
         Id=11
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(13,11);(3,8)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'w';'w';'w';'w';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'w';'f';'f';'f';'w';'f';'f';'f';'s';'s';'f';'f';'w'|]
             [|'w';'f';'w';'f';'f';'f';'w';'f';'f';'f';'f';'s';'f';'f';'w'|]
-            [|'w';'f';'w';'w';'w';'d';'w';'f';'f';'f';'f';'f';'s';'f';'w'|]
+            [|'w';'f';'w';'w';'w';'f';'w';'f';'f';'f';'f';'f';'s';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'d'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'w';'w';'w';'f';'f';'w'|]
             [|'a';'a';'a';'f';'f';'f';'f';'f';'f';'w';'f';'f';'w';'f';'w'|]
             [|'a';'a';'a';'a';'a';'f';'f';'f';'f';'w';'f';'f';'w';'f';'w'|]
-            [|'a';'a';'a';'a';'a';'a';'f';'f';'f';'w';'w';'f';'f';'f';'w'|]
-            [|'a';'a';'a';'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'a';'a';'a';'a';'a';'a';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'a';'a';'a';'a';'a';'a';'s';'f';'f';'w';'w';'f';'f';'f';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'s';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
         ]
         Puertas=[{Posicion=(7,0);Sala_destino=10};{Posicion=(7,14);Sala_destino=12}]
         Items=[]
     }
     {
         Id=12
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(1,1);(13,13);(1,10);(10,5)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
@@ -384,12 +384,12 @@ let mapcollection:list<Room> =[
     }
     {
         Id=13
-        Enemigos=[] //(,)
+        Enemigos=generateEnemiesWithPositions[(3,12);(12,10)]
         Mapa=array2D [
-            [|'w';'w';'w';'w';'w';'w';'a';'a';'a';'a';'a';'w';'w';'w';'w'|]
-            [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'a';'s';'s';'s';'s';'w'|]
-            [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'s';'f';'f';'f';'s';'w'|]
-            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'w';'w';'w';'w';'s';'a';'a';'a';'a';'a';'w';'w';'w';'w'|]
+            [|'w';'f';'f';'f';'w';'s';'a';'a';'a';'a';'s';'s';'s';'s';'w'|]
+            [|'w';'f';'f';'f';'w';'s';'a';'a';'a';'s';'f';'f';'f';'s';'w'|]
+            [|'w';'w';'w';'f';'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
@@ -398,11 +398,34 @@ let mapcollection:list<Room> =[
             [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'w';'f';'f';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
-            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'f';'f';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'s';'s';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'a';'a';'a';'w';'w';'w';'w';'w';'w'|]
         ]
         Puertas=[{Posicion=(7,0);Sala_destino=12};{Posicion=(7,14);Sala_destino=14}]
+        Items=[]
+    }
+    {
+        Id=14
+        Enemigos=generateEnemiesWithPositions[(7,7);(8,10);(6,12)]
+        Mapa=array2D [
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'d'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'w';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'f';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'f';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+        ]
+        Puertas=[{Posicion=(7,0);Sala_destino=13};{Posicion=(7,14);Sala_destino=15}]
         Items=[]
     }
 ]
@@ -481,7 +504,77 @@ let itemmapcollection:list<Room> =[
 ]
 
 
-let bossmapcollection:list<Room> =[]
+let bossmapcollection:list<Room> =[
+    {
+        Id=1
+        Enemigos=[]
+        Mapa=array2D [
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
+            [|'w';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'d'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'w'|]
+            [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+        ]
+        Puertas=[{Posicion=(7,0);Sala_destino=4};{Posicion=(7,14);Sala_destino=6}]
+        Items=[]
+    }
+    {
+        Id=2
+        Enemigos=[]
+        Mapa=array2D [
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
+            [|'w';'s';'f';'f';'f';'f';'f';'f';'s';'f';'f';'f';'f';'s';'w'|]
+            [|'w';'f';'f';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'s';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'w';'w';'f';'w';'w';'f';'f';'s';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'w';'f';'f';'f';'w';'f';'f';'f';'f';'w'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'d'|]
+            [|'w';'s';'f';'f';'f';'w';'f';'f';'f';'w';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'w';'w';'f';'w';'w';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'f';'f';'w'|]
+            [|'w';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'w'|]
+            [|'w';'s';'s';'f';'f';'f';'f';'f';'f';'f';'f';'f';'s';'s';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+        ]
+        Puertas=[{Posicion=(7,0);Sala_destino=4};{Posicion=(7,14);Sala_destino=6}]
+        Items=[]
+    }
+    {
+        Id=3
+        Enemigos=[]
+        Mapa=array2D [
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+            [|'w';'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'w'|]
+            [|'w';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'a';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'a';'a';'a';'a';'a';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'a';'a';'a';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'a';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'w'|]
+            [|'w';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'a';'a';'a';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
+        ]
+        Puertas=[{Posicion=(7,0);Sala_destino=1};{Posicion=(7,14);Sala_destino=3}]
+        Items=[]
+    }
+]
 
 
 
@@ -561,8 +654,6 @@ let updateRoomWithDoors (id: int) (total: int) (room: Room) =
 let generateRooms (spawn: Room list) (maps: Room list) (items: Room list) =
     let spawnRoom = spawn |> List.item (random.Next(spawn.Length))
     let mapRooms = maps |> List.sortBy (fun _ -> random.Next()) |> List.take 5
-    let itemRoom = items |> List.item (random.Next(items.Length))
-
-    let total = mapRooms.Length + 2  // Agregar 2 para incluir spawnRoom y itemRoom
-    spawnRoom :: itemRoom :: mapRooms
+    let total = mapRooms.Length + 1
+    spawnRoom :: mapRooms
     |> List.mapi (fun id room -> updateRoomWithDoors (id + 1) total room)
