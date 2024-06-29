@@ -8,10 +8,6 @@ let WeaponsCollection:list<Weapon>=[
     {Nombre="mandoble";Daño=30;Rango=1}
     {Nombre="daga";Daño=10;Rango=1}
     {Nombre="Chayanne"; Daño=10000;Rango=10}
-    {Nombre="Chayanne"; Daño=10000;Rango=10}
-    {Nombre="Chayanne"; Daño=10000;Rango=10}
-    {Nombre="Chayanne"; Daño=10000;Rango=10}
-    {Nombre="Chayanne"; Daño=10000;Rango=10}
 ]
 
 
