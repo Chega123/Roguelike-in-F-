@@ -3,6 +3,7 @@ module Mapa
 open Types
 open System
 open Enemy
+open Items
 
 //Enemigos=generateEnemiesWithPositions[(6,2);(6,12);(7,11)]
 
@@ -409,7 +410,7 @@ let mapcollection:list<Room> =[
 
 let itemmapcollection:list<Room> =[
     {
-        Id=6
+        Id=1
         Enemigos=[] //(,)
         Mapa=array2D [
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
@@ -419,7 +420,7 @@ let itemmapcollection:list<Room> =[
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'f';'f';'f';'f';'f';'a';'a';'a';'a';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'d';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'d'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'a';'a';'a';'a';'f';'f';'f';'f';'f';'a';'a';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
@@ -428,11 +429,11 @@ let itemmapcollection:list<Room> =[
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
             [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
         ]
-        Puertas=[{Posicion=(7,0);Sala_destino=5};{Posicion=(7,14);Sala_destino=7}]
-        Items=[]
+        Puertas=[{Posicion=(7,0);Sala_destino=5}]
+        Items=[{Posicion=(7,7);tipo={Nombre="Chayanne"; Daño=10000;Rango=10}}]
     }
     {
-        Id=7
+        Id=2
         Enemigos=[] //(,)
         Mapa=array2D [
             [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
@@ -442,7 +443,7 @@ let itemmapcollection:list<Room> =[
             [|'a';'a';'a';'a';'a';'w';'f';'f';'f';'w';'a';'a';'a';'a';'a'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'d';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'d'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'a';'a';'a';'a';'a';'w';'f';'f';'f';'w';'a';'a';'a';'a';'a'|]
@@ -451,11 +452,11 @@ let itemmapcollection:list<Room> =[
             [|'a';'a';'a';'a';'a';'w';'s';'f';'f';'w';'a';'a';'a';'a';'a'|]
             [|'a';'a';'a';'a';'a';'w';'f';'f';'f';'w';'a';'a';'a';'a';'a'|]
         ]
-        Puertas=[{Posicion=(7,0);Sala_destino=5};{Posicion=(7,14);Sala_destino=7}]
-        Items=[]
+        Puertas=[{Posicion=(7,0);Sala_destino=5}]
+        Items=[{Posicion=(7,7);tipo={Nombre="Chayanne"; Daño=10000;Rango=10}}]
     }
     {
-        Id=8
+        Id=3
         Enemigos=[] //(,)
         Mapa=array2D [
             [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
@@ -465,7 +466,7 @@ let itemmapcollection:list<Room> =[
             [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
             [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'d';'f';'f';'f';'f';'f';'f';'w';'f';'f';'f';'f';'f';'f';'d'|]
+            [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
             [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
@@ -474,8 +475,8 @@ let itemmapcollection:list<Room> =[
             [|'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'a'|]
             [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
         ]
-        Puertas=[{Posicion=(7,0);Sala_destino=5};{Posicion=(7,14);Sala_destino=7}]
-        Items=[]
+        Puertas=[{Posicion=(7,0);Sala_destino=5}]
+        Items=[{Posicion=(7,7);tipo={Nombre="Chayanne"; Daño=10000;Rango=10}}]
     }
 ]
 
@@ -524,6 +525,18 @@ let drawMap (game: Gamestate) =
         | _ -> ()
     )
 
+    actual_room.Items |> List.iter (fun item ->
+        let ex, ey = item.Posicion
+        match item.tipo.Nombre with
+        | "espada" -> mapCopy.[ex, ey] <- '☺'
+        | "lanza" -> mapCopy.[ex, ey] <- '☻'
+        | "arco" -> mapCopy.[ex, ey] <- '♥'
+        | "mandoble" -> mapCopy.[ex, ey] <- '♦'
+        | "daga" -> mapCopy.[ex, ey] <- '♣'
+        | "Chayanne" -> mapCopy.[ex, ey] <- '7'
+        | _ -> ()
+    )
+
     // Actualiza la habitación actual con el nuevo mapa
     let updated_room = { actual_room with Mapa = mapCopy }
 
@@ -545,9 +558,11 @@ let updateRoomWithDoors (id: int) (total: int) (room: Room) =
         | _ -> [{Posicion=(7,14); Sala_destino=id+1}; {Posicion=(7,0); Sala_destino=id-1}] // Doors to the next and previous rooms
     { room with Id = id; Puertas = newDoors }
 
-let generateRooms (spawn: list<Room>) (maps: list<Room>) =
+let generateRooms (spawn: Room list) (maps: Room list) (items: Room list) =
     let spawnRoom = spawn |> List.item (random.Next(spawn.Length))
     let mapRooms = maps |> List.sortBy (fun _ -> random.Next()) |> List.take 5
-    let total = mapRooms.Length + 1
-    spawnRoom :: mapRooms
+    let itemRoom = items |> List.item (random.Next(items.Length))
+
+    let total = mapRooms.Length + 2  // Agregar 2 para incluir spawnRoom y itemRoom
+    spawnRoom :: itemRoom :: mapRooms
     |> List.mapi (fun id room -> updateRoomWithDoors (id + 1) total room)

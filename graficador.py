@@ -28,7 +28,13 @@ def load_images():
         'E': pygame.image.load('sprites/enemigo/esqueleto' + str(numero_aleatorio) + '.jpg'),
         'Z': pygame.image.load('sprites/enemigo/zombie' + str(numero_aleatorio) + '.jpg'),
         'B': pygame.image.load('sprites/enemigo/brujo' + str(numero_aleatorio) + '.jpg'),
-        '♫': pygame.image.load('sprites/enemigo/espectro' + str(numero_aleatorio) + '.jpg')
+        '♫': pygame.image.load('sprites/enemigo/espectro' + str(numero_aleatorio) + '.jpg'),
+        '☺': pygame.image.load('sprites/Armas/espada.jpg'),
+        '☻': pygame.image.load('sprites/Armas/lanza.jpg'),
+        '♥': pygame.image.load('sprites/Armas/arco.jpg'),
+        '♦': pygame.image.load('sprites/Armas/mandoble.jpg'),
+        '♣': pygame.image.load('sprites/Armas/daga.jpg'),
+        '7': pygame.image.load('sprites/Armas/Chayanne.jpg')
         # Agrega más letras e imágenes según sea necesario
     }
     return image_map

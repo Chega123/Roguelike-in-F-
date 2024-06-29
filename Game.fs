@@ -4,7 +4,7 @@ open Player
 open Mapa
 open Types
 open Enemy
-
+open Items
 open System
 open System.Threading.Tasks
 open FileUtils
@@ -51,13 +51,15 @@ let updateGameState (game: Gamestate) (contador:int) =
                 movedPlayer
 
         let ChangeRo = ChangeRoom updatedPlayer game 
-        printf "Vida: %A" updatedPlayer.Vida 
-        printf "Arma: %A" updatedPlayer.Arma.Nombre
+        let changeArma= changeWeapon ChangeRo game 
+        
+        printf "Vida: %A" changeArma.jugador.Vida 
+        printf "Arma: %A" changeArma.jugador.Arma.Nombre
         if contador % 35 = 0 then 
-            let game_enemies = updateGameStateWithEnemies game 
-            { game_enemies with jugador = ChangeRo }
+            let game_enemies = updateGameStateWithEnemies changeArma 
+            { game_enemies with jugador =changeArma.jugador }
         else 
-            { game with jugador = ChangeRo }
+            { game with jugador = changeArma.jugador }
 
 
 let rec gameLoop (game: Gamestate) (contador:int) =

@@ -6,6 +6,7 @@
   <ItemGroup>
     <Compile Include="FileUtils.fs" />
     <Compile Include="types.fs" />
+    <Compile Include="Items.fs" />
     <Compile Include="Enemy.fs" />
     <Compile Include="Mapa.fs" />
     <Compile Include="Player.fs" />
