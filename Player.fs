@@ -65,21 +65,20 @@ let attackEnemies (player: Player) (enemies: Enemy list) =
 
 
 let changeWeapon (player: Player) (game: Gamestate) =
-    let actualroom = game.Habitaciones.[game.jugador.Habitacion_Actual - 1]
-    let oldw=player.Arma
-    printfn "Entré a cambiar arma: %s" oldw.Nombre
-    let itemposition =
-        match actualroom.Items with
-        | item :: _ when item.Posicion = player.Posicion -> Some item.tipo
-        | _ -> None
-
-    match itemposition with
-    | Some weapon ->
-        printfn "Entré a cambiar arma: %s" weapon.Nombre
-        let oldWeaponItem = [{ Posicion = player.Posicion; tipo = oldw }]
-        let updatedPlayer = { player with Arma = weapon }
-        let updatedRoom = { actualroom with Items = oldWeaponItem }
+    let actualRoom = game.Habitaciones.[game.jugador.Habitacion_Actual - 1]
+    
+    let itemInPosition = 
+        actualRoom.Items 
+        |> List.tryFind (fun item -> item.Posicion = player.Posicion)
+    
+    match itemInPosition with
+    | Some item ->
+        let updatedPlayer = { player with Arma = item.tipo }
+        let updatedItems = actualRoom.Items |> List.filter (fun i -> i.Posicion <> player.Posicion)
+        let updatedRoom = { actualRoom with Items = updatedItems }
         let updatedRooms = game.Habitaciones |> List.mapi (fun i room -> if i = game.jugador.Habitacion_Actual - 1 then updatedRoom else room)
-        Async.Start(playMp3FileAsync recoger)
+        Async.Start(playMp3FileAsync recoger)        
         { game with jugador = updatedPlayer; Habitaciones = updatedRooms }
-    | None -> { game with jugador = player}
+    
+    | None -> 
+        { game with jugador = player }
