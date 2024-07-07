@@ -22,6 +22,7 @@ type Item={
 
 type Player = {
     Posicion : int * int
+    UltimaDireccion:Direction
     Direccion:Direction
     Habitacion_Actual:int
     Arma:Weapon
