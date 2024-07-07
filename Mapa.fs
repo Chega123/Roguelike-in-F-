@@ -407,7 +407,7 @@ let mapcollection:list<Room> =[
     }
     {
         Id=14
-        Enemigos=generateEnemiesWithPositions[(7,7);(8,10);(6,12)]
+        Enemigos=generateEnemiesWithPositions[(7,7);(8,10);(6,12);(12,11)]
         Mapa=array2D [
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
@@ -421,7 +421,7 @@ let mapcollection:list<Room> =[
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'w';'w';'w';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'f';'w';'w'|]
-            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'w';'w';'w'|]
+            [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'f';'w';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'f';'f';'f';'w';'w'|]
             [|'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w';'w'|]
         ]
@@ -482,21 +482,21 @@ let itemmapcollection:list<Room> =[
         Id=3
         Enemigos=[] //(,)
         Mapa=array2D [
-            [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
-            [|'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'a'|]
-            [|'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a'|]
-            [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
-            [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
-            [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
+            [|'w';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'w'|]
+            [|'w';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'d';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
             [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
-            [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
-            [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
-            [|'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a'|]
-            [|'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a'|]
-            [|'a';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'a'|]
-            [|'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'w'|]
+            [|'w';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'w'|]
+            [|'w';'a';'a';'f';'f';'f';'f';'f';'f';'f';'f';'f';'a';'a';'w'|]
+            [|'w';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'a';'w'|]
         ]
         Puertas=[{Posicion=(7,0);Sala_destino=5}]
         Items=[randomItem (7,7)]
@@ -618,7 +618,12 @@ let drawMap (game: Gamestate) =
 
     // Jugador
     let px, py = game.jugador.Posicion
-    mapCopy.[px, py] <- '2'
+    match game.jugador.UltimaDireccion with
+    | UP -> mapCopy.[px, py] <- 'W'
+    | DOWN -> mapCopy.[px, py] <- 'S'
+    | LEFT -> mapCopy.[px, py] <- 'A'
+    | RIGHT -> mapCopy.[px, py] <- 'D'
+    | NADA -> mapCopy.[px, py] <- 'D'
 
     // Puertas
     actual_room.Puertas |> List.iter (fun puerta ->
