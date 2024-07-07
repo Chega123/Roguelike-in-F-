@@ -39,10 +39,24 @@ let generateBossesWithPositions (positions: list<int * int>) : list<Enemy> =
 let calculateDirection (enemyPos: int * int) (playerPos: int * int) =
     let (ex, ey) = enemyPos
     let (px, py) = playerPos
-    if ex < px then DOWN
-    elif ex > px then UP
-    elif ey < py then RIGHT
-    else LEFT
+    let dx = px - ex
+    let dy = py - ey
+
+    if dx = 0 && dy = 0 then
+        // Ya está en la misma posición que el jugador
+        NADA
+    else if abs(dx) > abs(dy) then
+        if dx > 0 then DOWN else UP
+    else if abs(dy) > abs(dx) then
+        if dy > 0 then RIGHT else LEFT
+    else
+        // Si ambos son iguales, elegimos una dirección al azar para dar variedad
+        let rand = System.Random()
+        if rand.Next(2) = 0 then
+            if dx > 0 then DOWN else UP
+        else
+            if dy > 0 then RIGHT else LEFT
+
 
 let moveEnemy (enemy: Enemy) (playerPos: int * int) (map: char[,]) =
     let direction = calculateDirection enemy.Posicion playerPos
