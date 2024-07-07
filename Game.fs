@@ -14,10 +14,10 @@ let handlePlayerInput (input: ConsoleKeyInfo option) (state: Gamestate) =
     match input with
     | Some input ->
         match input.Key with
-        | ConsoleKey.UpArrow -> { state with jugador = { state.jugador with Direccion = UP } } 
-        | ConsoleKey.DownArrow -> { state with jugador = { state.jugador with Direccion = DOWN } }
-        | ConsoleKey.LeftArrow -> { state with jugador = { state.jugador with Direccion = LEFT } }
-        | ConsoleKey.RightArrow -> { state with jugador = { state.jugador with Direccion = RIGHT } }
+        | ConsoleKey.UpArrow -> { state with jugador = { state.jugador with Direccion = UP; UltimaDireccion = UP } } 
+        | ConsoleKey.DownArrow -> { state with jugador = { state.jugador with Direccion = DOWN; UltimaDireccion = DOWN } }
+        | ConsoleKey.LeftArrow -> { state with jugador = { state.jugador with Direccion = LEFT; UltimaDireccion = LEFT } }
+        | ConsoleKey.RightArrow -> { state with jugador = { state.jugador with Direccion = RIGHT; UltimaDireccion = RIGHT } }
         | ConsoleKey.Spacebar -> { state with jugador = { state.jugador with Direccion = ATTACK } }
         | _ -> { state with jugador = { state.jugador with Direccion = NADA } }
     | None -> { state with jugador = { state.jugador with Direccion = NADA } }
@@ -39,7 +39,7 @@ let updateGameState (game: Gamestate) (contador:int) =
         
 
         let updatedPlayer =
-            if contador % 5 = 0 then // Limitar los ataques de los enemigos
+            if contador % 7 = 0 then // Limitar los ataques de los enemigos
                 game.Habitaciones.[game.jugador.Habitacion_Actual - 1].Enemigos
                 |> List.fold (fun player enemy ->
                     if enemy.Posicion = game.jugador.Posicion then 
