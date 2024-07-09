@@ -29,12 +29,12 @@ let playMp3FileAsync (filePath: string) =
     }
 
 // Ejemplo de uso
-let chayanne_ataque = "G:\proyecto LP\Roguelike\Roguelike-in-F-\Sounds\chayanne.mp3"
+let chayanne_ataque = "Sounds\chayanne.mp3"
 
-let golpe_generico="G:\proyecto LP\Roguelike\Roguelike-in-F-\Sounds\golpe.mp3"
+let golpe_generico="Sounds\golpe.mp3"
 
-let daño="G:\proyecto LP\Roguelike\Roguelike-in-F-\Sounds\daño.mp3"
+let daño="Sounds\daño.mp3"
 // Aquí puedes continuar con otras operaciones mientras el audio se reproduce en segundo plano
-let recoger= "G:\proyecto LP\Roguelike\Roguelike-in-F-\Sounds\item.mp3"
+let recoger= "Sounds\item.mp3"
 
-let fondo= "G:\proyecto LP\Roguelike\Roguelike-in-F-\Sounds\Fondo.mp3"
+let fondo= "Sounds\Fondo.mp3"
